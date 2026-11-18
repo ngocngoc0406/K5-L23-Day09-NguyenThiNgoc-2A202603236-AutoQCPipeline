@@ -9,13 +9,13 @@ Số liệu lấy từ `02_error_list_v1` (lỗi trước khi sửa). Mẫu số
 
 | Mã lỗi | Số ảnh/dòng | Ai sửa (máy/người) | Vì sao |
 |---|---:|---|---|
-| DUP_IMAGE_EXACT | 8 ảnh / 224 | máy (loại ở cửa vào) | trùng từng byte (md5), quy tắc chắc chắn |
-| DUP_IMAGE_NEAR | 4 ảnh / 224 | máy (loại ở cửa vào) | phash ≤ 12; mình đã mở xem cả 4 cặp, đều là trùng thật (§3) |
-| LEAK_TEST | 5 ảnh / 224 | máy (loại ở cửa vào) | trùng ảnh test/val, giữ lại thì kết quả đo trên test bị sai |
-| CORRUPT_IMAGE / BAD_SIZE | 2 / 3 ảnh | máy (loại ở cửa vào) | ảnh hỏng hoặc cạnh < 250 px, không dùng được |
-| BAD_CLASS_NAME | 2 dòng, 1 file (`data.yaml`) | máy (`rename_classes`) | ghi lại `names` cho đúng `cfg.classes` |
-| BAD_FORMAT / BAD_CLASS_ID / BOX_ZERO / DUP_BOX | 3 / 6 / 4 / 7 dòng | máy (`drop_line`, 20 dòng) | dòng hỏng thì không suy ra được box đúng; dòng trùng thì xoá bản sau |
-| BOX_OUT_OF_IMAGE | 8 dòng / 8 ảnh | máy (`clip_box`, 8 dòng) | cắt mép box về [0,1], giữ nguyên lớp |
+| DUP_IMAGE_EXACT | 8 ảnh / 224 | máy loại ở cửa vào; người kiểm lại `01_intake` | trùng từng byte (md5), quy tắc chắc chắn |
+| DUP_IMAGE_NEAR | 4 ảnh / 224 | máy loại ở cửa vào; người mở xem từng cặp | phash ≤ 12; cả 4 cặp mở ra xem đều là trùng thật (§3) |
+| LEAK_TEST | 5 ảnh / 224 | máy loại ở cửa vào; người mở xem từng cặp | trùng ảnh test/val, giữ lại thì kết quả đo trên test bị sai |
+| CORRUPT_IMAGE / BAD_SIZE | 2 / 3 ảnh | máy loại ở cửa vào | ảnh hỏng hoặc cạnh < 250 px, không dùng được |
+| BAD_CLASS_NAME | 2 dòng, 1 file (`data.yaml`) | máy (`rename_classes`); người kiểm lại `03_fixes.csv` | ghi lại `names` cho đúng `cfg.classes` |
+| BAD_FORMAT / BAD_CLASS_ID / BOX_ZERO / DUP_BOX | 3 / 6 / 4 / 7 dòng | máy (`drop_line`, 20 dòng); người kiểm lại qua `03_fixes.csv` và hàng đợi duyệt (`FIXED_DROP_LINE`) | dòng hỏng thì không suy ra được box đúng; dòng trùng thì xoá bản sau |
+| BOX_OUT_OF_IMAGE | 8 dòng / 8 ảnh | máy (`clip_box`, 8 dòng); người kiểm lại qua hàng đợi duyệt (`FIXED_CLIP_BOX`) | cắt mép box về [0,1], giữ nguyên lớp |
 | MISSING_LABEL_FILE | 6 ảnh / 202 | **người** (`needs_label`) | máy không bịa nhãn; ảnh được đẩy lên đầu hàng đợi (trọng số 10) |
 | POSSIBLE_MISSING | 53 dòng / 52 ảnh | người | model lớn thấy vật nhưng nhãn không có box (chỉ là ý kiến thứ hai) |
 | POSSIBLE_WRONG_CLASS | 18 ảnh | người | lớp hợp lệ nhưng có thể sai nghĩa, quy tắc không bắt được |
