@@ -1,0 +1,3 @@
+check,severity,code,image,line,message,extra
+box_aspect,warn,BOX_ASPECT_EXTREME,img_0042,5,box lớp person mảnh (cao >> rộng): tỉ lệ 9.6 > 8,"{""ratio"": 9.58, ""class"": ""person""}"
+box_aspect,warn,BOX_ASPECT_EXTREME,img_0124,6,box lớp car dẹt (rộng >> cao): tỉ lệ 9.1 > 8,"{""ratio"": 9.11, ""class"": ""car""}"

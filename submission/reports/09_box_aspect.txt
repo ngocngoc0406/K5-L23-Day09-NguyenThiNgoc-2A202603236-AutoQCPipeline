@@ -1,0 +1,9 @@
+# Check thưởng box_aspect — box có tỉ lệ khung hình bất thường (WARN)
+
+raw (trước pipeline): quét 224 ảnh -> 3 cảnh báo trên 3 ảnh
+  [WARN ] BOX_ASPECT_EXTREME   img_0042.txt:5  box lớp person mảnh (cao >> rộng): tỉ lệ 9.6 > 8
+  [WARN ] BOX_ASPECT_EXTREME   img_0076.txt:5  box lớp person mảnh (cao >> rộng): tỉ lệ 9.2 > 8
+  [WARN ] BOX_ASPECT_EXTREME   img_0155.txt:2  box lớp person mảnh (cao >> rộng): tỉ lệ 9.8 > 8
+sau pipeline (work/run/ds): quét 202 ảnh -> 2 cảnh báo trên 2 ảnh
+  [WARN ] BOX_ASPECT_EXTREME   img_0042.txt:5  box lớp person mảnh (cao >> rộng): tỉ lệ 9.6 > 8
+  [WARN ] BOX_ASPECT_EXTREME   img_0124.txt:6  box lớp car dẹt (rộng >> cao): tỉ lệ 9.1 > 8
